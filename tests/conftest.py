@@ -15,10 +15,8 @@ from __future__ import absolute_import, print_function, unicode_literals
 import logging
 import os
 import pprint
-import random
 import shutil
 import stat
-import string
 import sys
 import tempfile
 import textwrap
@@ -119,17 +117,7 @@ def pytest_tempdir_basename():
     """
     Return the temporary directory basename for the salt test suite.
     """
-    random_string = "".join(
-        random.SystemRandom().choice(string.ascii_letters + string.digits)
-        for char in range(6)
-    )
-    return "salt-tests-tmpdir-{}".format(random_string)
-
-
-@pytest.fixture(scope="session")
-def tempdir(tempdir):
-    RUNTIME_VARS.TMP = tempdir.strpath
-    return tempdir
+    return "salt-tests-tmpdir"
 
 
 # <---- PyTest Tempdir Plugin Hooks ----------------------------------------------------------------------------------

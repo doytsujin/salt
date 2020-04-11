@@ -69,7 +69,7 @@ def no_symlinks():
     try:
         output = subprocess.Popen(
             ["git", "config", "--get", "core.symlinks"],
-            cwd=RUNTIME_VARS.CODE_DIR,
+            cwd=RUNTIME_VARS.TMP,
             stdout=subprocess.PIPE,
         ).communicate()[0]
     except OSError as exc:
