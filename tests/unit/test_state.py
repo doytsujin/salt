@@ -3,14 +3,12 @@
     :codeauthor: Nicole Thomas <nicole@saltstack.com>
 """
 
-# Import Python libs
 from __future__ import absolute_import, print_function, unicode_literals
 
 import os
 import shutil
 import tempfile
 
-# Import Salt libs
 import salt.exceptions
 import salt.state
 import salt.utils.files
@@ -21,14 +19,7 @@ from tests.support.helpers import with_tempfile
 from tests.support.mixins import AdaptedConfigurationTestCaseMixin
 from tests.support.mock import MagicMock, patch
 from tests.support.runtests import RUNTIME_VARS
-
-# Import Salt Testing libs
-from tests.support.unit import TestCase, skipIf
-
-try:
-    import pytest
-except ImportError as err:
-    pytest = None
+from tests.support.unit import TestCase
 
 
 class StateCompilerTestCase(TestCase, AdaptedConfigurationTestCaseMixin):
@@ -326,7 +317,6 @@ class HighStateTestCase(TestCase, AdaptedConfigurationTestCaseMixin):
         self.assertEqual(ret, [("somestuff", "cmd")])
 
 
-@skipIf(pytest is None, "PyTest is missing")
 class StateReturnsTestCase(TestCase):
     """
     TestCase for code handling state returns.
